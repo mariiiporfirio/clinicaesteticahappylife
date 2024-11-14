@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de clientes</title>
+    <link rel="stylesheet" href="/css/listadecliente.css">
+</head>
+<body>
+    <h1>Lista de Clientes</h1>
+    <table border="1" width="100%">
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Email</th>
+            <th>whatsapp</th>
+            <th>CEP</th>
+            <th>Logradouro</th>
+            <th>Numero</th>
+            <th>Complemento</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>UF</th>
+        </tr>
+
+        <% if (clientes.length > 0) {  %>
+            <% for(var i = 0; i < clientes.length; i++) { %>
+                <tr>
+                    <td><%=clientes[i].codcliente %></td>
+                    <td><%=clientes[i].nome %></td>
+                    <td><%=clientes[i].sobrenome %></td>
+                    <td><%=clientes[i].email %></td>
+                    <td><%=clientes[i].whatsapp %></td>
+                    <td><%=clientes[i].cep %></td>
+                    <td><%=clientes[i].logradouro %></td>
+                    <td><%=clientes[i].numero %></td>
+                    <td><%=clientes[i].complemento %></td>
+                    <td><%=clientes[i].bairro%></td>
+                    <td><%=clientes[i].cidade %></td>
+                    <td><%=clientes[i].uf %></td>
+                    <td><a href="/delete-clientes?codcliente= <%- clientes[i].codcliente %>" >Excluir</a></td>
+                    <td><a href="/update-clientes?codcliente= <%- clientes[i].codcliente %>" >Alterar</a></td>
+                </tr>
+                <% } %>
+
+                <% } else { %>
+                    <h1>Não temos esse cliente cadastrado</h1>
+            <% } %>
+    </table>
+    <script src="listadecliente.js"></script>
+</body>
+</html>
+    

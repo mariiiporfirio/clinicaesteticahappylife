@@ -1,0 +1,43 @@
+body {
+    background-color: mistyrose;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+h1 {
+    font-size: 50px;
+    padding: 2%;
+    text-decoration: underline 3px;
+}
+
+table {
+    width: 80%;
+    background-color: pink;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+th {
+    background-color: mistyrose;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
