@@ -1,4 +1,4 @@
-body{
+/* body{
     background-color:mistyrose;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:80% ;
+    width:50vw ;
     background-color: pink;
     border: 3px solid black;
     border-radius: 10px;
@@ -27,9 +27,11 @@ form{
 
 .corpo {
     display: flex;
+    width: 70%;
     flex-direction: row;
     align-items:center;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 input {
@@ -43,4 +45,114 @@ input {
     height: 30px;
     text-align: center;
     margin-top: 10px    ;
+} */
+
+body{
+    background-color:mistyrose;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    font-size: 50px;
+    padding: 2%;
+    text-decoration: underline 3px; 
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+    background-color: pink;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.corpo {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#buscar {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#buscar:hover {
+    background-color: #d32f2f;
+}
+
+#resultado {
+    margin-top: 10px;
+}
+
+/* Estilos para telas menores */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+
+    .corpo {
+        width: 100%;
+    }
 }

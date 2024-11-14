@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -32,4 +32,61 @@
     </form>
    <script src="/js/script.js"></script>
 </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Tela de Cadastro</title>
+</head>
+
+<body>
+
+    <h1>Tela de Cadastro</h1>
+
+    <form action="/" method="post">
+        <fieldset>
+            <legend>Informações Pessoais</legend>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome" required autocomplete="on">
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome" required autocomplete="on">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email" required autocomplete="on">
+            <label for="whatsapp">Whatsapp:</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Whatsapp" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Endereço</legend>
+            <label for="cep">CEP:</label>
+            <input type="number" id="cep" name="cep" placeholder="Digite CEP" maxlength="8">
+            <button type="button" id="buscar">Buscar</button>
+            <div id="resultado"></div>
+            <label for="logradouro">Logradouro:</label>
+            <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" readonly>
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" name="numero" placeholder="Número" required>
+            <label for="complemento">Complemento:</label>
+            <input type="text" id="complemento" name="complemento" placeholder="Complemento">
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" placeholder="Bairro" required>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Cidade" required>
+            <label for="uf">Estado:</label>
+            <input type="text" id="uf" name="uf" placeholder="Estado" required>
+        </fieldset>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+    <script src="/js/script.js"></script>
+</body>
+
 </html>

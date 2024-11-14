@@ -22,6 +22,7 @@
             <th>Bairro</th>
             <th>Cidade</th>
             <th>UF</th>
+            <th colspan="2">Ações</th>
         </tr>
 
         <% if (clientes.length > 0) {  %>
@@ -38,14 +39,16 @@
                     <td><%=clientes[i].complemento %></td>
                     <td><%=clientes[i].bairro%></td>
                     <td><%=clientes[i].cidade %></td>
-                    <td><%=clientes[i].uf %></td>
+                    <td><%=clientes[i].estado %></td>
                     <td><a href="/delete-clientes?codcliente= <%- clientes[i].codcliente %>" >Excluir</a></td>
                     <td><a href="/update-clientes?codcliente= <%- clientes[i].codcliente %>" >Alterar</a></td>
                 </tr>
+                
                 <% } %>
 
                 <% } else { %>
                     <h1>Não temos esse cliente cadastrado</h1>
+                    <a href="/"><h2>Clique aqui para voltar para a tela de cadastro.</h2></a>
             <% } %>
     </table>
     <script src="listadecliente.js"></script>

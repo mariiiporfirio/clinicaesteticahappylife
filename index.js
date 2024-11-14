@@ -40,20 +40,15 @@ app.post('/', function(req, res){
     var complemento = req.body.complemento;
     var bairro = req.body.bairro;
     var cidade = req.body.cidade;
-    var uf = req.body.uf;
-   
-    
- 
+    var uf = req.body.uf; // Ajuste o nome da variável para corresponder ao nome do campo no formulário
+
+    var sql = "INSERT INTO clientes (nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   
- var sql = "INSERT INTO clientes (nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-  
- conexao.query(sql, [nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf], function(error, result){
-     if(error) throw error;
-     
-     res.redirect('/listadecliente');
- });
-  
-     });
+    conexao.query(sql, [nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf], function(error, result){
+        if(error) throw error;
+        res.redirect('/listadecliente');
+    });
+});
   
 
 
@@ -110,7 +105,7 @@ app.get('/delete-clientes', function(req,res){
         var cidade = req.body.cidade;
         var uf = req.body.uf;
        
-        var sql = "UPDATE clientes set nome=?, sobrenome=?, email=?, whatsapp=?, cep=?, logradouro=?, numero=?, complemento?, bairro=?, cidade=?, uf=? where codcliente=?";
+        var sql = "UPDATE clientes set nome=?, sobrenome=?, email=?, whatsapp=?, cep=?, logradouro=?, numero=?, complemento?, bairro=?, cidade=?, estado=? where codcliente=?";
 
 
 
