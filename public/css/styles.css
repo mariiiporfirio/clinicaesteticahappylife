@@ -146,6 +146,12 @@ input[type="submit"]:hover {
     margin-top: 10px;
 }
 
+#cep::-webkit-outer-spin-button,
+#cep::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* Estilos para telas menores */
 @media (max-width: 600px) {
     form {

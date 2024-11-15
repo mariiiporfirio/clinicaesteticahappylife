@@ -42,7 +42,7 @@ app.post('/', function(req, res){
     var cidade = req.body.cidade;
     var uf = req.body.uf; // Ajuste o nome da variável para corresponder ao nome do campo no formulário
 
-    var sql = "INSERT INTO clientes (nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    var sql = "INSERT INTO clientes (nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   
     conexao.query(sql, [nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf], function(error, result){
         if(error) throw error;
@@ -84,9 +84,6 @@ app.get('/update-clientes',function (req,res){
         } else{
             res.status(404).send('Cliente não encontrado');
         }
-          
-   
-
     });
         
 });
@@ -118,6 +115,6 @@ app.post('/update-clientes', function(req,res){
 
 
 app.listen(3000, () => {
-    console.log("Conectado na posta 3000");
+    console.log("Conectado na porta 3000");
 });
         
