@@ -1,13 +1,13 @@
 var conexao = require("./conexaobanco");
  
 var express = require('express');
-var bodyParser = require('body-parser'); // Certifique-se de importar o body-parser
+var bodyParser = require('body-parser');
 var app = express();
  
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.urlencoded({ extended:true }));
  
 app.set('view engine', 'ejs');
 
@@ -56,70 +56,68 @@ app.post('/', function(req, res){
 app.get('/delete-clientes', function(req,res){
     var sql = "delete from clientes where codcliente=?";
  
-        var codcliente =  req.query.codcliente;
+    var codcliente =  req.query.codcliente;
  
-        conexao.query(sql,[codcliente], function(error, result){
-            if(error)console.log(error);
-            res.redirect('/listadecliente');
+    conexao.query(sql,[codcliente], function(error, result){
+        if(error)console.log(error);
+        res.redirect('/listadecliente');
  
-        });
     });
+});
 
 
  
 
  
-    //update- alterando dados no bancos de dados 
-    app.get('/update-clientes',function (req,res){
-        var sql = "select * from clientes where codcliente=?";
+//update- alterando dados no bancos de dados 
+app.get('/update-clientes',function (req,res){
+    var sql = "select * from clientes where codcliente=?";
 
-        var codcliente = req.query.codcliente;
+    var codcliente = req.query.codcliente;
 
-        conexao.query(sql,[codcliente],function(error,result){
-            if(error)console.log(error);
+    conexao.query(sql,[codcliente],function(error,result){
+        if(error)console.log(error);
 
-           //verficar se a consulta retornou  algum resultado
+        //verficar se a consulta retornou  algum resultado
         if(result && result.length > 0) {
-            res.render("alterarclientes", {clientes: result[0]});
-           } else{
-               res.status(404).send('Cliente não encontrado');
-           }
+        res.render("alterarclientes", {clientes: result[0]});
+        } else{
+            res.status(404).send('Cliente não encontrado');
+        }
           
    
 
-        });
-        
     });
+        
+});
 
-    //Update metodo post para enviar 
-    app.post('/update-clientes', function(req,res){
-        var nome = req.body.nome;
-        var sobrenome = req.body.sobrenome;
-        var email = req.body.email;
-        var whatsapp = req.body.whatsapp;
-        var cep = req.body.cep;
-        var logradouro = req.body.logradouro;
-        var numero = req.body.numero;
-        var complemento = req.body.complemento;
-        var bairro = req.body.bairro;
-        var cidade = req.body.cidade;
-        var uf = req.body.uf;
+//Update metodo post para enviar 
+app.post('/update-clientes', function(req,res){
+    var nome = req.body.nome;
+    var sobrenome = req.body.sobrenome;
+    var email = req.body.email;
+    var whatsapp = req.body.whatsapp;
+    var cep = req.body.cep;
+    var logradouro = req.body.logradouro;
+    var numero = req.body.numero;
+    var complemento = req.body.complemento;
+    var bairro = req.body.bairro;
+    var cidade = req.body.cidade;
+    var uf = req.body.uf;
        
-        var sql = "UPDATE clientes set nome=?, sobrenome=?, email=?, whatsapp=?, cep=?, logradouro=?, numero=?, complemento?, bairro=?, cidade=?, estado=? where codcliente=?";
+    var sql = "UPDATE clientes set nome=?, sobrenome=?, email=?, whatsapp=?, cep=?, logradouro=?, numero=?, complemento?, bairro=?, cidade=?, estado=? where codcliente=?";
 
 
 
-        conexao.query(sql,[nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf], function(error, result){
+    conexao.query(sql,[nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf], function(error, result){
         if(error) console.log(error);
         //verficar se a consulta retornou  algum resultado
         res.redirect('/listadecliente');
-       
-
-        });
     });
+});
 
 
-    app.listen(3000, () => {
-        console.log("Conectado na posta 3000");
-        });
+app.listen(3000, () => {
+    console.log("Conectado na posta 3000");
+});
         
