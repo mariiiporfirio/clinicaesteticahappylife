@@ -101,12 +101,13 @@ app.post('/update-clientes', function(req,res){
     var bairro = req.body.bairro;
     var cidade = req.body.cidade;
     var uf = req.body.uf;
+    var codcliente = req.body.codcliente;
        
-    var sql = "UPDATE clientes set nome=?, sobrenome=?, email=?, whatsapp=?, cep=?, logradouro=?, numero=?, complemento?, bairro=?, cidade=?, estado=? where codcliente=?";
+    var sql = "UPDATE clientes set nome=?, sobrenome=?, email=?, whatsapp=?, cep=?, logradouro=?, numero=?, complemento=?, bairro=?, cidade=?, uf=? where codcliente=?";
 
 
 
-    conexao.query(sql,[nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf], function(error, result){
+    conexao.query(sql,[nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf, codcliente], function(error, result){
         if(error) console.log(error);
         //verficar se a consulta retornou  algum resultado
         res.redirect('/listadecliente');
