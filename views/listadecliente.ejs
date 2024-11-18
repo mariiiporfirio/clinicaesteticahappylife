@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de clientes</title>
-    <link rel="stylesheet" href="/css/listadecliente.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+
+    <a href="/"><img class="logo" src="/img/happy_lifelogo.png " alt="logo"></a>
+
     <h1>Lista de Clientes</h1>
     <table border="1" width="100%">
         <tr>
@@ -22,6 +25,8 @@
             <th>Bairro</th>
             <th>Cidade</th>
             <th>UF</th>
+            <th>Alterar</th>
+            <th>Excluir</th>
         </tr>
 
         <% if (clientes.length > 0) {  %>
@@ -40,12 +45,12 @@
                     <td><%=clientes[i].cidade %></td>
                     <td><%=clientes[i].uf %></td>
 
+                    <div class="botoes">
+                        <td><a href="/delete-clientes?codcliente= <%- clientes[i].codcliente %>" ><button class="botao">Excluir</button></a></td>
+                        <td><a href="/update-clientes?codcliente= <%- clientes[i].codcliente %>" ><button class="botao">Alterar</button></a></td>
+                    </div>
                 </tr>
                 
-                <div class="botoes">
-                    <td><a href="/delete-clientes?codcliente= <%- clientes[i].codcliente %>" ><button class="botao">Excluir</button></a></td>
-                    <td><a href="/update-clientes?codcliente= <%- clientes[i].codcliente %>" ><button class="botao">Alterar</button></a></td>
-                </div>
                 <% } %>
 
                 <% } else { %>

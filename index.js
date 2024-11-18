@@ -65,10 +65,6 @@ app.get('/delete-clientes', function(req,res){
     });
 });
 
-
- 
-
- 
 //update- alterando dados no bancos de dados 
 app.get('/update-clientes',function (req,res){
     var sql = "select * from clientes where codcliente=?";
@@ -107,10 +103,19 @@ app.post('/update-clientes', function(req,res){
 
 
 
-    conexao.query(sql,[nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf, codcliente], function(error, result){
-        if(error) console.log(error);
-        //verficar se a consulta retornou  algum resultado
-        res.redirect('/listadecliente');
+    var sql = "UPDATE clientes SET nome=?, sobrenome=?, email=?, whatsapp=?, cep=?, logradouro=?, numero=?, complemento=?, bairro=?, cidade=?, uf=? WHERE codcliente=?"; // Query SQL para atualizar um cliente
+    conexao.query(sql,[nome,sobrenome, email, whatsapp, cep, logradouro, numero,complemento,bairro,cidade,uf, codcliente], function(error, result){ // Executa a query
+        if(error){
+            console.error("Erro ao atualizar cliente:", error); // Imprime o erro com mais detalhes
+            res.status(500).send("Erro ao atualizar cliente"); // Retorna uma resposta de erro ao cliente
+        } else {
+            if (result.affectedRows > 0) { // Verifica se algum registro foi afetado
+                res.redirect('/listadecliente'); // Redireciona para a lista de clientes
+            } else {
+                console.warn("Nenhum cliente atualizado."); // Imprime um aviso se nenhum registro foi atualizado
+                res.status(404).send("Cliente não encontrado"); // Retorna uma resposta 404 se o cliente não for encontrado
+            }
+        }
     });
 });
 
