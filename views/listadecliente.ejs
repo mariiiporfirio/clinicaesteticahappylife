@@ -25,8 +25,8 @@
             <th>Bairro</th>
             <th>Cidade</th>
             <th>UF</th>
+            <!-- <th>Excluir</th> -->
             <th>Alterar</th>
-            <th>Excluir</th>
         </tr>
 
         <% if (clientes.length > 0) {  %>
@@ -46,7 +46,7 @@
                     <td><%=clientes[i].uf %></td>
 
                     <div class="botoes">
-                        <td><a href="/delete-clientes?codcliente= <%- clientes[i].codcliente %>" ><button class="botao">Excluir</button></a></td>
+                        <!-- <td><a href="/delete-clientes?codcliente= <%- clientes[i].codcliente %>" ><button class="botao">Excluir</button></a></td> -->
                         <td><a href="/update-clientes?codcliente= <%- clientes[i].codcliente %>" ><button class="botao">Alterar</button></a></td>
                     </div>
                 </tr>

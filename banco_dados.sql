@@ -8,7 +8,7 @@ CREATE TABLE clientes (
    nome VARCHAR(50) NOT NULL,              
    sobrenome VARCHAR(100) NOT NULL,        
    email VARCHAR(50) NOT NULL UNIQUE,
-   whatsapp VARCHAR(15) NOT NULL,
+   whatsapp VAR   CHAR(20) NOT NULL,
    cep INT(8) NOT NULL,
    logradouro VARCHAR(50) NOT NULL,
    numero VARCHAR(20) NOT NULL,

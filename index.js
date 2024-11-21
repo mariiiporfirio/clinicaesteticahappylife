@@ -2,12 +2,14 @@ var conexao = require("./conexaobanco");
  
 var express = require('express');
 var bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 var app = express();
  
 app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
+app.use(methodOverride('_method'));
  
 app.set('view engine', 'ejs');
 
@@ -52,18 +54,18 @@ app.post('/', function(req, res){
   
 
 
-//deletando dados do banco - Delete
-app.get('/delete-clientes', function(req,res){
-    var sql = "delete from clientes where codcliente=?";
+// //deletando dados do banco - Delete
+// app.get('/delete-clientes', function(req,res){
+//     var sql = "delete from clientes where codcliente=?";
  
-    var codcliente =  req.query.codcliente;
+//     var codcliente =  req.query.codcliente;
  
-    conexao.query(sql,[codcliente], function(error, result){
-        if(error)console.log(error);
-        res.redirect('/listadecliente');
+//     conexao.query(sql,[codcliente], function(error, result){
+//         if(error)console.log(error);
+//         res.redirect('/listadecliente');
  
-    });
-});
+//     });
+// });
 
 //update- alterando dados no bancos de dados 
 app.get('/update-clientes',function (req,res){
@@ -118,6 +120,25 @@ app.post('/update-clientes', function(req,res){
         }
     });
 });
+
+// HTPP DELETE - BIBLIOTECA METHOD_OVERRIDE
+app.delete('/delete/:codcliente', (req, res) => {
+    const { codcliente } = req.params;
+    // console.log(`Tentando excluir usuário com CodCliente: ${codcliente}`);
+  
+    conexao.query('DELETE FROM clientes WHERE codcliente = ?', [codcliente], (err, result) => {
+      if (err) {
+        console.error('Erro ao excluir usuário:', err);
+        return res.status(500).json({ error: 'Erro ao excluir usuário' });
+      }
+  
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ error: 'Usuário não encontrado' });
+      }
+  
+      res.redirect('/listadecliente');
+    });
+  });
 
 
 app.listen(3000, () => {
